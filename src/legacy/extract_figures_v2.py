@@ -1,4 +1,8 @@
 import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from paths import OPENREVIEW_DIR, WORK_DIR, RUNS_DIR  # noqa: E402
+import os
 import gzip
 import json
 import pymupdf
@@ -263,7 +267,7 @@ def extract_vila_images(vila_dir, pdf_dir, out_vila, paper_ids_list):
                 
 if __name__ == "__main__":
 
-    openreview_dir = "X:\\preiss_group\\Shared\\openreview"
+    openreview_dir = OPENREVIEW_DIR
     assert os.path.exists(openreview_dir)
 
     vila_dir = os.path.join(openreview_dir, "extracted_mmda")
@@ -271,8 +275,8 @@ if __name__ == "__main__":
     pdf_dir = os.path.join(openreview_dir, "pdfs")
     assert os.path.exists(pdf_dir)
 
-    out_pymupdf = os.path.join(r"C:\Users\uaeor\Downloads\Duncan")
-    out_vila = os.path.join(r"C:\Users\uaeor\Downloads\Duncan")
+    out_pymupdf = WORK_DIR
+    out_vila = WORK_DIR
 
     papers_to_process = ['_0kaDkv3dVf', '_2CLeIIYMPd', '__ObYt4753c','_8EQ_gMAHFy','_IM-AfFhna9', '_Ko4kT3ckWy', '_kxlwvhOodK', '_LNdXw0BSx', '0BaWDGvCa5p', '0DecTiJFbm']
     

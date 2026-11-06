@@ -1,0 +1,23 @@
+# Large / generated data
+data/openreview/
+work/
+runs/
+wandb/
+*.pt
+*.zip
+*.csv.gz
+# keep the small labelled CSV
+!data/combined.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

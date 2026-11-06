@@ -1,0 +1,16 @@
+# Python 3.10+
+# For GPU, install the matching CUDA build of torch first: https://pytorch.org/get-started/locally/
+torch>=2.1
+transformers>=4.38
+datasets>=2.18
+scikit-learn>=1.3
+optuna>=3.5
+pandas>=2.0
+openpyxl>=3.1          # decision file may be .xlsx
+numpy>=1.24
+lxml>=5.0              # GROBID TEI parsing
+pymupdf>=1.24          # PDF text and image extraction
+Pillow>=10.0
+ultralytics>=8.1       # YOLOv8 classifiers
+requests>=2.31
+jupyter>=1.0

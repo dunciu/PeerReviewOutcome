@@ -1,4 +1,8 @@
 import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from paths import OPENREVIEW_DIR, WORK_DIR, RUNS_DIR  # noqa: E402
+import os
 import gzip
 import json
 import pymupdf
@@ -100,7 +104,7 @@ def extract_vila_images(vila_dir, pdf_dir, out_vila):
                 
 if __name__ == "__main__":
 
-    openreview_dir = os.path.join("/mnt", "xdrive", "preiss_group", "Shared", "openreview")
+    openreview_dir = OPENREVIEW_DIR
     assert os.path.exists(openreview_dir)
 
     vila_dir = os.path.join(openreview_dir, "extracted_mmda")

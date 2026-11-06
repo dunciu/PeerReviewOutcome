@@ -1,4 +1,6 @@
 import os
+from paths import OPENREVIEW_DIR, WORK_DIR, RUNS_DIR
+import os
 import re
 import csv
 import sys
@@ -405,7 +407,7 @@ def process_files_to_csv(vila_dir, grobid_dir, output_csv, freq_file, min_score=
         
 if __name__ == "__main__":
 
-    OPEN_REVIEW_DIR = os.path.join("/mnt", "xdrive", "preiss_group", "Shared", "openreview")
+    OPEN_REVIEW_DIR = OPENREVIEW_DIR
     assert os.path.exists(OPEN_REVIEW_DIR)
     
     VILA_INPUT_DIR = os.path.join(OPEN_REVIEW_DIR, "extracted_mmda")

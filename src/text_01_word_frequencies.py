@@ -1,4 +1,6 @@
 import os
+from paths import OPENREVIEW_DIR, WORK_DIR, RUNS_DIR
+import os
 import csv
 import json
 import gzip
@@ -51,7 +53,7 @@ def build_word_frequency_corpus(corpus_dir, output_file):
         w.writerows(word_counts.items())
     
 
-OPEN_REVIEW_DIR = os.path.join("/mnt", "xdrive", "preiss_group", "Shared", "openreview")
+OPEN_REVIEW_DIR = OPENREVIEW_DIR
 assert os.path.exists(OPEN_REVIEW_DIR)
     
 corpus_dir = os.path.join(OPEN_REVIEW_DIR, "extracted_mmda")

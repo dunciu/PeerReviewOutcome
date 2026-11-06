@@ -1,4 +1,6 @@
 import os
+from paths import OPENREVIEW_DIR, WORK_DIR, RUNS_DIR
+import os
 import gzip
 import json
 import pymupdf  # Ensure pymupdf is imported
@@ -337,7 +339,7 @@ def extract_vila_images(vila_dir, pdf_dir, out_vila, paper_ids_list):
 if __name__ == "__main__":
     
     # !!! IMPORTANT: UPDATE THESE PATHS !!!
-    openreview_dir = "X:\\preiss_group\\Shared\\openreview"
+    openreview_dir = OPENREVIEW_DIR
     if not os.path.exists(openreview_dir):
         print(f"ERROR: Base directory not found: {openreview_dir}")
         exit()
@@ -353,16 +355,19 @@ if __name__ == "__main__":
         exit()
 
     # Create separate output directories to avoid confusion
-    out_pymupdf = os.path.join(r"C:\Users\uaeor\Downloads\Duncan", "pymupdf_output")
-    out_vila = os.path.join(r"C:\Users\uaeor\Downloads\Duncan", "vila_output")
+    out_pymupdf = os.path.join(WORK_DIR, "pymupdf_output")
+    out_vila = os.path.join(WORK_DIR, "vila_output")
     
     if not os.path.exists(out_pymupdf):
         os.makedirs(out_pymupdf)
     if not os.path.exists(out_vila):
         os.makedirs(out_vila)
 
-    # Process only the problematic paper
-    papers_to_process = ['_2CLeIIYMPd']
+    # Process every paper with VILA output, or only a comma-separated list in $PAPER_IDS
+    if os.environ.get("PAPER_IDS"):
+        papers_to_process = os.environ["PAPER_IDS"].split(",")
+    else:
+        papers_to_process = [f.replace('.json.gz', '') for f in os.listdir(vila_dir) if f.endswith('.json.gz')]
     
     print("--- Starting VILA Image Extraction")
     extract_vila_images(vila_dir, pdf_dir, out_vila, papers_to_process)
